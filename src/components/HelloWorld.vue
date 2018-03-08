@@ -80,6 +80,7 @@
         </a>
       </li>
     </ul>
+    <div style="height: 1600px; background: yellow;">sss</div>
   </div>
 </template>
 
@@ -99,7 +100,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .hello {
-  background: red;
+  /* background: red; */
 }
 h1, h2 {
   font-weight: normal;

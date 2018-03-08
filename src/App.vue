@@ -1,105 +1,140 @@
 <template>
-  <el-container style="height: 100%; border: 1px solid #eee; overflow: hidden;">
-    <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-      <el-menu :default-openeds="['1', '3']">
-        <el-submenu index="1">
-          <template slot="title"><i class="el-icon-message"></i>导航一</template>
-          <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="1-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="1-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="1-4-1">选项4-1</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-submenu index="2">
-          <template slot="title"><i class="el-icon-menu"></i>导航二</template>
-          <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="2-1">选项1</el-menu-item>
-            <el-menu-item index="2-2">选项2</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="2-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="2-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="2-4-1">选项4-1</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-submenu index="3">
-          <template slot="title"><i class="el-icon-setting"></i>导航三</template>
-          <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="3-1">选项1</el-menu-item>
-            <el-menu-item index="3-2">选项2</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="3-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="3-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="3-4-1">选项4-1</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-      </el-menu>
-    </el-aside>
-    
+  <el-container style="width: 100%; position: absolute; top: 0; bottom: 0;">
+    <el-header style="height: 50px;">Header</el-header>
     <el-container>
-      <el-header style="text-align: right; font-size: 12px">
-        <el-dropdown>
-          <i class="el-icon-setting" style="margin-right: 15px"></i>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>查看</el-dropdown-item>
-            <el-dropdown-item>新增</el-dropdown-item>
-            <el-dropdown-item>删除</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-        <span>王小虎</span>
-      </el-header>
-      
+      <el-aside width="180px">
+        <el-menu
+          default-active="2"
+          class="el-menu-vertical-demo"
+          @open="handleOpen"
+          @close="handleClose"
+          background-color="#545c64"
+          text-color="#fff"
+          unique-opened=true
+          active-text-color="#ffd04b">
+          <el-submenu index="1">
+            <template slot="title">
+              <i class="el-icon-location"></i>
+              <span>菜品信息管理</span>
+            </template>
+
+            <router-link to="/">
+              <el-menu-item index="1-1">单个菜品信息维护</el-menu-item>
+            </router-link>
+            <router-link to="/test">
+              <el-menu-item index="1-2">菜品信息批量维护</el-menu-item>
+            </router-link>
+            <el-submenu index="1-3">
+              <template slot="title">选项4</template>
+              <el-menu-item index="1-3-1">选项1</el-menu-item>
+            </el-submenu>
+          </el-submenu>
+
+          <el-submenu index="2">
+            <template slot="title">
+              <i class="el-icon-menu"></i>
+              <span>菜品图片管理</span>
+            </template>
+
+            <el-menu-item index="2-1">菜品信息核实</el-menu-item>
+            <el-menu-item index="2-2">图片文件批量导出</el-menu-item>
+            <el-submenu index="2-3">
+              <template slot="title">上传图片查询</template>
+              <el-menu-item index="2-3-1">根据时间查询</el-menu-item>
+              <el-menu-item index="2-3-2">根据名字查询</el-menu-item>
+            </el-submenu>
+          </el-submenu>
+
+          <el-submenu index="3">
+            <template slot="title">
+              <i class="el-icon-menu"></i>
+              <span>日志管理</span>
+            </template>
+
+            <el-menu-item index="3-1">用户操作日志</el-menu-item>
+            <el-submenu index="3-2">
+              <template slot="title">系统日志</template>
+              <el-menu-item index="3-2-1">服务异常日志</el-menu-item>
+              <el-menu-item index="3-2-2">服务启动/关闭日志</el-menu-item>
+              <el-menu-item index="3-2-2">查询系统日志</el-menu-item>
+            </el-submenu>
+          </el-submenu>
+
+          <el-submenu index="4">
+            <template slot="title">
+              <i class="el-icon-menu"></i>
+              <span>用户管理</span>
+            </template>
+
+            <el-menu-item index="4-1">用户管理</el-menu-item>
+            <el-submenu index="4-2">
+              <template slot="title">角色管理</template>
+              <el-menu-item index="4-2-1">添加角色</el-menu-item>
+              <el-menu-item index="4-2-2">删除角色</el-menu-item>
+              <el-menu-item index="4-2-2">角色功能管理</el-menu-item>
+            </el-submenu>
+          </el-submenu>
+        </el-menu>
+      </el-aside>
       <el-main>
-        <el-table :data="tableData">
-          <el-table-column prop="date" label="日期" width="140">
-          </el-table-column>
-          <el-table-column prop="name" label="姓名" width="120">
-          </el-table-column>
-          <el-table-column prop="address" label="地址">
-          </el-table-column>
-        </el-table>
+        <router-view />
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <style>
-.el-header {
-  background-color: #b3c0d1;
-  color: #333;
-  line-height: 60px;
-}
-
-.el-aside {
-  color: #333;
-}
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  a:active {
+    text-decoration: none;
+  }
+  .el-header {
+    background-color: #B3C0D1;
+    padding: 0;
+  }
+  .el-aside {
+    background-color: #D3DCE6;
+  }
+  .el-main {
+    background-color: #E9EEF3;
+    padding: 0;
+  }
+  .el-menu {
+    border-right: none;
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding-left: 0;
+  }
+  .el-submenu .el-menu-item {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 45px;
+    min-width: 180px;
+  }
+  .is-opened > div {
+    background-color: rgb(67,74,80) !important;
+  }
+  .is-opened .is-opened > div {
+    background-color: rgb(84,92,100) !important;
+  }
 </style>
 
 <script>
 export default {
-  data() {
-    const item = {
-      date: "2016-05-02",
-      name: "王小虎",
-      address: "上海市普陀区金沙江路 1518 弄"
-    };
-    return {
-      tableData: Array(20).fill(item)
-    };
-  }
+  methods: {
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    },
+  },
 };
 </script>
