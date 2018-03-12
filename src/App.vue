@@ -10,7 +10,7 @@
           @close="handleClose"
           background-color="#545c64"
           text-color="#fff"
-          unique-opened=true
+
           active-text-color="#ffd04b">
           <el-submenu index="1">
             <template slot="title">
@@ -95,11 +95,10 @@
     text-decoration: none;
   }
   .el-header {
-    background-color: #B3C0D1;
-    padding: 0;
+    background-color: #373d41;
   }
   .el-aside {
-    background-color: #D3DCE6;
+    background-color: #333744;
   }
   .el-main {
     background-color: #E9EEF3;
