@@ -8,7 +8,8 @@
 
     <a href="www.baidu.com">百度一下</a>
     <hr>
-    <child-a></child-a>
+    <p>看子组件传递上来的数据</p>
+    <child-a :namess="namess" :isok="isok" v-on:passData="gotoServer"></child-a>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import childA from './child';
 
 export default {
   name: 'HelloWorld',
+  
   data() {
     return {
       msg: 'Welcome <span style="color: red;">hello</span>',
@@ -24,16 +26,27 @@ export default {
       isok: true,
       b: 'b',
       isb: true,
+      namess: {
+        x: 1,
+        y: 2,
+        z: 3,
+      }
     };
   },
   components: {
     childA,
   },
+  methods: {
+    gotoServer(item) {
+      console.log('son for father=', item);
+      this.msg = item;
+    }
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
-  @import './index.scss';
+  @import './index.less';
   
 </style>
