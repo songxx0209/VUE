@@ -4,11 +4,15 @@
     <h2 @click="ss(121212)">Essential Links</h2>
     <input v-model="msg">
     <!-- <div style="height: 1600px; background: yellow;">sss</div> -->
-    <a href="www.youtube.com">youtube</a>
+    <!-- <a href="www.youtube.com">youtube</a> -->
+    <p>{{count}}</p>
+    <button @click="add(10)">+</button>
+    <button @click="reduce()">-</button>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex';
 export default {
   name: 'child',
   props: ['namess', 'isok'],
@@ -31,7 +35,7 @@ export default {
   },
   // 类似于react中didmount
   mounted() {
-    console.log('mounted');
+    console.log('mounted', this);
   },
   // 组件更新（页面刷新）之前执行
   beforeUpdate() {
@@ -56,10 +60,23 @@ export default {
 		console.log('destroyed');
 	},
   methods: {
+    ...mapMutations([
+      'add', 'reduce',
+    ]),
     ss(item) {
-      console.log('子组件方法走了' + item);  
+      console.log('子组件方法走了' + item);
       this.$emit('passData', item);
+      // let a = {x: 1, y: 2};
+      // let b = { ...a, z: 3};
+      // console.log(b);
     },
   },
+  computed: {
+    ...mapState([
+      'count',
+    ]),
+  },
+
+
 };
 </script>
