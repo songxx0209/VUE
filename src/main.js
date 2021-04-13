@@ -4,13 +4,26 @@ import Vue from 'vue';
 import store from './store/';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+//自定义公共样式
+import './style/common.css';
 
 import App from './App';
 import router from './router';
 
+import VueDND from 'awe-dnd'
+
+Vue.use(VueDND)
+
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
+
+// router.beforeEach((to, from, next) => {
+//   if (from.path === '/home') {
+//     confirm('wowow');
+//   }
+//   next();
+// });
 
 /* eslint-disable no-new */
 new Vue({

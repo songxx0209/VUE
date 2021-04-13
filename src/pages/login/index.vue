@@ -1,28 +1,16 @@
 <template>
-  <div class="hello">
-    <h1 v-bind:title="message">{{ msg }}</h1>
-    <h2>Essential Links</h2>
+  <div>
+
+    <h2>login</h2>
     <br>
-    <p>{{$store.state.count}}</p>
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 
 <script>
 
-import store from '../../store';
-
 export default {
-  name: 'HelloWorld',
-  data() {
-    return {
-      msg: 'Welcome to phicomm',
-      message: `页面加载于${new Date().toLocaleString()}`,
-    };
-  },
-  mounted() {
-    console.log(this);
-  },
-  store,
+  
 };
 </script>
 
